@@ -6,6 +6,10 @@ All notable changes are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- `TG304 composer-script`: flags Composer event scripts in `composer.json` that run automatically on install, update, or autoload dump (#7).
+
 ## [0.2.0] - 2026-11-09
 
 ### Added
