@@ -6,6 +6,10 @@ All notable changes are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- `test_every_rule_has_a_test` in `tests/test_meta.py`: verifies that every registered rule in `RULES` is covered by at least one test. (#11)
+
 ## [0.2.0] - 2026-11-09
 
 ### Added
