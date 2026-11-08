@@ -6,6 +6,10 @@ All notable changes are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- `TG801 rust-build-script`: flags Cargo build scripts (`build.rs`) and custom `build = "..."` definitions in `Cargo.toml` that run when the project is compiled or opened in rust-analyzer (#8).
+
 ## [0.2.0] - 2026-11-09
 
 ### Added
