@@ -25,6 +25,7 @@ AUTORUN_NAMES = {
     ".pre-commit-config.yml", ".envrc", "lefthook.yml", "lefthook.yaml", ".lefthook.yml", ".lefthook.yaml",
     "lefthook-local.yml", "lefthook-local.yaml", ".yarnrc.yml", ".yarnrc", ".pnpmfile.cjs", "bunfig.toml",
     "pyproject.toml", "gradle-wrapper.properties",
+    ".nvim.lua", ".nvimrc", ".exrc", ".vimrc",
 }
 
 # Instruction files that AI coding agents read and follow. They do not run code, so they are

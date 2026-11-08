@@ -6,6 +6,10 @@ All notable changes are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- `TG602 vim-exrc`: flags root-level Neovim / Vim configuration files (`.nvim.lua`, `.nvimrc`, `.exrc`, `.vimrc`) that run automatically when the editor opens the directory if `exrc` is enabled (#9).
+
 ## [0.2.0] - 2026-11-09
 
 ### Added

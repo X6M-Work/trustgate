@@ -114,7 +114,7 @@ Linux, macOS and Windows. Anything listed there runs for *every* project you ope
 | npm, yarn, pnpm, bun | `package.json`, `binding.gyp`, `.npmrc`, `.yarnrc.yml`, `.yarnrc`, `.pnpmfile.cjs`, `bunfig.toml` | install-time lifecycle scripts; gyp `<!( )` command expansions and implicit `node-gyp rebuild`; `script-shell` / `node-options`; committed auth tokens; non-default registries; `yarnPath` and yarn plugins; pnpm hooks; bun `preload` |
 | Python | `*.pth`, `sitecustomize.py`, `usercustomize.py`, `setup.py`, `pyproject.toml` | `.pth` import lines; start-up hooks; `setup.py` process, eval or network calls and overridden install commands (parsed with `ast`, never executed); in-tree build backends (`backend-path`) |
 | Dev Containers | `.devcontainer/**/devcontainer.json`, `.devcontainer.json` | `initializeCommand` (runs on the host) and in-container lifecycle commands |
-| Git hooks & shell | `.husky/*`, `lefthook.yml`, `.pre-commit-config.yaml`, `.envrc` | hook scripts, local pre-commit entries, direnv files |
+| Git hooks & shell | `.husky/*`, `lefthook.yml`, `.pre-commit-config.yaml`, `.envrc`, `.nvim.lua`, `.nvimrc`, `.exrc` | hook scripts, local pre-commit entries, direnv files, Vim/Neovim local config |
 | GitHub Actions | `.github/workflows/*.yml` | `toJSON(secrets)` dumps; issue / PR / comment / discussion text interpolated into `run:` |
 | Gradle | `gradle/wrapper/gradle-wrapper.properties` | wrapper downloading Gradle from outside `services.gradle.org` |
 | Everything above | | invisible Unicode: tag characters (decoded for you), bidi controls, zero-width characters |
