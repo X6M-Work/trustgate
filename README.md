@@ -53,6 +53,7 @@ trustgate scan . -f json --min-severity medium
 trustgate baseline                   # accept today's findings ...
 trustgate scan --baseline .trustgate-baseline.json   # ... and report only new ones
 trustgate rules                      # list every rule
+trustgate rules TG100                # explain one rule and how to fix it
 ```
 
 | Option | Default | Meaning |
@@ -112,9 +113,10 @@ Linux, macOS and Windows. Anything listed there runs for *every* project you ope
 | AI agents | `.claude/settings*.json`, `.mcp.json`, `.cursor/hooks.json`, `.cursor/mcp.json`, `.gemini/settings.json` | every hook command (unprompted events like `SessionStart` rated high); `statusLine` and `apiKeyHelper`-style commands; loader env vars; `enableAllProjectMcpServers`, `bypassPermissions`, `Bash(*)`; locally launched MCP servers; project-enabled plugins and plugin marketplaces |
 | Agent instructions | `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `.cursorrules`, `.cursor/rules/`, `.github/copilot-instructions.md`, `.claude/commands/`, ... | hidden Unicode used to smuggle instructions past review |
 | npm, yarn, pnpm, bun | `package.json`, `binding.gyp`, `.npmrc`, `.yarnrc.yml`, `.yarnrc`, `.pnpmfile.cjs`, `bunfig.toml` | install-time lifecycle scripts; gyp `<!( )` command expansions and implicit `node-gyp rebuild`; `script-shell` / `node-options`; committed auth tokens; non-default registries; `yarnPath` and yarn plugins; pnpm hooks; bun `preload` |
+| Composer (PHP) | `composer.json` | event scripts (`post-install-cmd`, `post-autoload-dump`, ...) that run automatically on install or update |
 | Python | `*.pth`, `sitecustomize.py`, `usercustomize.py`, `setup.py`, `pyproject.toml` | `.pth` import lines; start-up hooks; `setup.py` process, eval or network calls and overridden install commands (parsed with `ast`, never executed); in-tree build backends (`backend-path`) |
 | Dev Containers | `.devcontainer/**/devcontainer.json`, `.devcontainer.json` | `initializeCommand` (runs on the host) and in-container lifecycle commands |
-| Git hooks & shell | `.husky/*`, `lefthook.yml`, `.pre-commit-config.yaml`, `.envrc` | hook scripts, local pre-commit entries, direnv files |
+| Git hooks & shell | `.husky/*`, `lefthook.yml`, `.pre-commit-config.yaml`, `.envrc`, `.nvim.lua`, `.nvimrc`, `.exrc` | hook scripts, local pre-commit entries, direnv files, Vim/Neovim local config |
 | GitHub Actions | `.github/workflows/*.yml` | `toJSON(secrets)` dumps; issue / PR / comment / discussion text interpolated into `run:` |
 | Rust | `build.rs`, `Cargo.toml` | `build.rs` and custom `build = "..."` scripts that Cargo and rust-analyzer run on build or workspace load |
 | Gradle | `gradle/wrapper/gradle-wrapper.properties` | wrapper downloading Gradle from outside `services.gradle.org` |

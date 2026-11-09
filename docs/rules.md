@@ -19,6 +19,7 @@ Every finding has a rule id, a default severity and a fix. Some findings are rai
 | TG301 | `node-gyp-exec` | medium | binding.gyp triggers an implicit install build or runs shell command expansions. | Review every <!( ) expansion; install with --ignore-scripts until reviewed. |
 | TG302 | `npmrc-risk` | medium | A project .npmrc changes how npm executes scripts, where it downloads from, or contains a token. | Remove the setting from the committed .npmrc; keep tokens in your user config or CI secrets. |
 | TG303 | `package-manager-exec` | medium | Package manager config makes yarn, pnpm or bun run JavaScript from the repository on every command or install. | Read the referenced file before running the package manager; remove the setting if you did not expect it. |
+| TG304 | `composer-script` | medium | composer.json defines an event script that runs automatically on install, update, or dump-autoload. | Run composer install with --no-scripts and review the scripts before running them. |
 | TG400 | `python-pth-exec` | high | A .pth file contains import lines, which Python executes at interpreter start-up. | Delete the .pth file or reduce it to plain path entries. |
 | TG401 | `setup-py-exec` | medium | setup.py runs commands or fetches code at build/install time. | Build in an isolated environment and review the setup.py code paths. |
 | TG402 | `python-startup-hook` | medium | sitecustomize.py or usercustomize.py is shipped and runs whenever it lands on sys.path. | Remove the file unless the project explicitly documents why it needs it. |
@@ -27,6 +28,7 @@ Every finding has a rule id, a default severity and a fix. Some findings are rai
 | TG501 | `devcontainer-lifecycle-command` | low | A dev container lifecycle command runs automatically inside the container. | Review the command, especially if secrets or your SSH agent are forwarded. |
 | TG600 | `git-hook-script` | low | A git hook manager will run repository scripts on git operations. | Read the hook scripts before running the project's install or setup step. |
 | TG601 | `direnv-envrc` | medium | An .envrc file runs shell code when you cd into the directory (once allowed). | Read the file before running 'direnv allow'. |
+| TG602 | `vim-exrc` | low | A project-level Vim or Neovim config runs when the editor opens the directory (if exrc is enabled). | Read the configuration file before accepting the editor's trust prompt. |
 | TG700 | `workflow-secret-dump` | critical | A GitHub Actions workflow serialises the entire secrets context. | Delete the workflow and rotate every repository and organisation secret. |
 | TG701 | `workflow-untrusted-exec` | high | A workflow interpolates attacker-controlled event text directly into a shell step. | Pass the value through an environment variable and never execute it. |
 | TG800 | `gradle-wrapper-distribution` | medium | The Gradle wrapper downloads Gradle from a non-official location; IDEs run it when the project is imported. | Point distributionUrl at https://services.gradle.org/distributions/ and add distributionSha256Sum. |
@@ -38,6 +40,7 @@ Every finding has a rule id, a default severity and a fix. Some findings are rai
 - **TG101**: `typescript.tsdk` pointing into `node_modules` is `low`, since it is a common, prompted VS Code setup.
 - **TG200**: hooks on events that fire without a prompt from you (`SessionStart`, `SessionEnd`, `Stop`, `Notification`, `PreCompact`, `Setup`) are `high`.
 - **TG202**: `permissions.defaultMode: bypassPermissions` is `critical`.
+- **TG203**: MCP servers launched with `npx`, `pnpm dlx`, `bunx` or `uvx` are `medium` when the package is unversioned or uses a moving tag or version range; exact-version pins stay `low`.
 - **TG300**: `preinstall`, `install` and `postinstall` are `medium`; `prepare`-family and `prepublish` scripts are `low`.
 - **TG301**: a `binding.gyp` with no command expansions only triggers the implicit `node-gyp rebuild` and is `low`.
 - **TG302**: literal auth tokens are `high`; a custom registry is `low`.
